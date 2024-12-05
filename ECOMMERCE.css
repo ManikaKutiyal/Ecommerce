@@ -1,0 +1,436 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto+Condensed:wght@300&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+* {
+    background-color: rgb(0, 0, 0);
+    color: #ffffff;
+}
+.splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Ensure splash is above all content */
+    animation: zoomInAndSpread 2s ease-out forwards, fadeOutSplash 2s 2s forwards; /* Zoom effect and fade out */
+}
+
+/* Keyframes for the zoom and spread effect */
+@keyframes zoomInAndSpread {
+    0% {
+        transform: scale(0.5); /* Start small */
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.5); /* Zoom in to a bigger size */
+        opacity: 1;
+    }
+    100% {
+        transform: scale(50); /* Spread out the logo */
+        opacity: 0; /* Make the logo disappear */
+    }
+}
+
+/* Keyframes for fading out the splash screen */
+@keyframes fadeOutSplash {
+    0% {
+        opacity: 1; /* Fully visible at start */
+    }
+    100% {
+        opacity: 0; /* Fade it out */
+        visibility: hidden; /* Hide it completely */
+        pointer-events: none; /* Disable any interactions */
+    }
+}
+/* Logo Styles */
+.logo {
+    width: 150px; /* Starting size of logo */
+    height: auto;
+    animation: zoomInAndSpread 2s ease-out forwards;
+}
+
+/* Main content styles */
+header {
+    display: flex;                /* Use Flexbox to arrange the logo and links horizontally */
+    justify-content: flex-start;  /* Align items to the left (logo on the left) */
+    align-items: center;          /* Vertically center the items */
+    padding: 20px;
+    z-index: 1;                   /* Ensure content is above other elements */
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%; /* Adjust width */
+    height: 2px; /* Line thickness */
+    background-color: #fff;
+    z-index: 1; /* Ensure it’s above other content */
+  }
+
+.side-logo img {
+    width: 150px; 
+    height: auto;
+    margin-right: 20px;           /* Space between the logo and the navigation links */
+}
+
+/* Links Styling */
+.links {
+    display: flex;                /* Align the links in a row */
+    gap: 15px;                    /* Space between each link */
+}
+
+.link-box {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    padding: 10px 20px;           /* Adjust padding to fit the links better */
+    font-size: 16px;
+    transition: background-color 0.3s ease;  /* Add a transition effect for hover */
+    margin: 20px 50px;
+}
+
+.link-box:hover {
+    background-color: #d6a553;    /* Change background color on hover */
+}
+.searching{
+    color: #000000;
+    font: 16px "Open Sans", sans-serif;
+    background: #ffffff;
+    border-radius: 40px;
+    margin: 0px 0px 0px -1px;
+    padding: 10px ;
+    display: inline;
+    transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
+    animation: fadeInUp 0.5s forwards; /* Fade-in effect for sections */
+}
+.searching:hover {
+    transform: translateY(-10px); /* Lift the section on hover */
+    box-shadow: 0 15px 30px rgba(255, 255, 255, 0.2); /* Enhanced shadow on hover */
+}
+
+#searching{
+    box-sizing: border-box;
+    box-shadow: #ffffff;
+    border-radius: 50% ;
+}
+button.searching {
+    color: #ffffff;
+    font: 16px "Open Sans", 'sans-serif';
+    background: #d6a553;
+    margin: 0px 0px 0px -1px;
+    padding: 10px;
+}
+.hero-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80vh; /* Full-screen height */
+    position: relative;
+    background-color: #000; /* Black background */
+  }
+  
+  .left-text, .right-text {
+    flex: 1; /* Adjust spacing on left and right */
+    text-align: center;
+    font-size: 1.5rem; /* Adjust font size as needed */
+    padding: 20px;
+  }
+  
+  .center-images {
+    flex: 2; /* Larger center area */
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; /* Full section height */
+    overflow: hidden;
+  }
+  
+  .center-images img {
+    position: absolute; /* Stack images on top of each other */
+    max-width: 80%; /* Adjust size of images */
+    max-height: 80%; /* Keep aspect ratio */
+    opacity: 0; /* Hidden by default */
+    transition: opacity 1s ease-in-out;
+    padding: 0px;
+    margin: 0px;
+    animation: swapImages 63s infinite;
+  }
+  
+  .center-images img.active {
+    opacity: 1; /* Only active image is visible */
+  }
+
+  @keyframes swapImages {
+    0%, 25% { 
+      opacity: 1; /* First image visible */ 
+    }
+    26%, 100% { 
+      opacity: 0; /* Fade out for other images */ 
+    }
+  }
+  
+  .center-images img:nth-child(1) {
+    animation: swapImages 12s infinite; /* 12 seconds cycle */
+  }
+  
+  .center-images img:nth-child(2) {
+    animation: swapImages 12s infinite 3s; /* Delay for the second image */
+  }
+  
+  .center-images img:nth-child(3) {
+    animation: swapImages 12s infinite 6s; /* Delay for the third image */
+  }
+  
+  .center-images img:nth-child(4) {
+    animation: swapImages 12s infinite 9s; /* Delay for the fourth image */
+  }
+ /* Sidebar Styles */
+.sidebar {
+    position: fixed;
+    top: 190px; /* Adjust based on your header height */
+    left: -300px; /* Hidden off-screen initially */
+    width: 300px;
+    height: calc(100% - 70px); /* Account for header height */
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    overflow-y: auto; /* Enable scrolling for long content */
+    transition: left 0.3s ease;
+    padding: 0px;
+    z-index: 1000;
+  }
+  
+  .sidebar h2 {
+    color: #d6a553;
+    font-size: 30px;
+    margin-top: 20px;
+    background-color: #fff;
+
+  }
+  
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background-color: #fff;
+
+  }
+  
+  .sidebar li {
+    margin: 10px 2px;
+    background-color: #fff;
+
+  }
+  
+  .sidebar li a {
+    color: #000000;
+    text-decoration: none;
+    display: block;
+    font-size: 14px;
+    text-decoration: solid;
+    background-color: #fff;
+  }
+  
+  .sidebar li a:hover {
+    background-color: #c9b3b3;
+    padding-left: 5px;
+    font: 20px;
+  }
+  
+  /* Sidebar Toggle */
+  input[type="checkbox"] {
+    display: none; 
+  }
+  
+  .sidebar-label {
+    position: fixed;
+    top: 0px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+    background-color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block;
+    margin-top: 150px;
+    border: #444;
+  }
+  
+  input[type="checkbox"]:checked ~ .sidebar {
+    left: 0; /* Slide into view */
+  }
+/* Shop by Brands Section */
+.brands-section {
+    text-align: center;
+    padding: 40px 20px;
+    background: linear-gradient(to bottom, #000000 0%, #000000 100%); /* Light background for distinction */
+  }
+  
+  .brands-section h2 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #222;
+  }
+  
+  /* Brand Logos Container */
+  .brand-logos {
+    display: flex;
+    flex-wrap: wrap; /* Wrap logos to the next row on smaller screens */
+    justify-content: center;
+    gap: 50px; /* Space between brand boxes */
+    background: linear-gradient(to bottom, #000000 0%, #000000 100%);
+  }
+  
+  /* Brand Box Styling */
+  .brand-box {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff; /* Default box color */
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Brand Logo Styling */
+  .brand-box img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+  }
+  
+  /* Hover Effects */
+  .brand-box:hover {
+    transform: rotate(30deg) translateY(-5px); /* Shake effect */
+    background-color: #222; /* Change background color */
+    border-color: #444; /* Darker border */
+  }
+  
+  .brand-box:hover img {
+    transform: scale(1.1); /* Slightly enlarge the logo */
+  }
+  /* Footer Styles */
+.footer {
+  font-family: 'space-mono', "Sans-serif";
+  background-color: #000000;
+  color: #fff;
+  padding: 40px 20px;
+  margin: 0;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-section {
+  flex: 1 1 250px;
+}
+
+.footer-section h3 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  color: #d6a553;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 10px;
+}
+
+.footer-section ul li a, 
+.footer-section a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-section a:hover {
+  color: #d6a553;
+}
+
+.signup-section .signup-form {
+  display: flex;
+  margin-top: 10px;
+}
+
+.signup-form input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+}
+
+.signup-form button {
+  background-color: #d6a553;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.signup-form button:hover {
+  background-color: #b68d41;
+}
+
+/* Social Media Links */
+.social-media .social-icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.social-media .social-icons a {
+  color: #fff;
+  text-decoration: none;
+  padding: 5px 10px;
+  border: 1px solid #d6a553;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.social-media .social-icons a:hover {
+  background-color: #d6a553;
+  color: #ffffff;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 14px;
+  color: #ccc;
+}
+
+.footer-bottom p {
+  margin: 5px 0;
+}
+
+.footer-bottom span {
+  color: #d6a553;
+}
+
+  
+  
