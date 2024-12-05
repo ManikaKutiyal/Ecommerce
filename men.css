@@ -1,0 +1,453 @@
+* {
+    background-color: rgb(255, 255, 255);
+    color: #000000;
+}
+.splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Ensure splash is above all content */
+    animation: zoomInAndSpread 2s ease-out forwards, fadeOutSplash 2s 2s forwards; /* Zoom effect and fade out */
+}
+
+/* Keyframes for the zoom and spread effect */
+@keyframes zoomInAndSpread {
+    0% {
+        transform: scale(0.5); /* Start small */
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.5); /* Zoom in to a bigger size */
+        opacity: 1;
+    }
+    100% {
+        transform: scale(50); /* Spread out the logo */
+        opacity: 0; /* Make the logo disappear */
+    }
+}
+
+/* Keyframes for fading out the splash screen */
+@keyframes fadeOutSplash {
+    0% {
+        opacity: 1; /* Fully visible at start */
+    }
+    100% {
+        opacity: 0; /* Fade it out */
+        visibility: hidden; /* Hide it completely */
+        pointer-events: none; /* Disable any interactions */
+    }
+}
+/* Logo Styles */
+.logo {
+    width: 150px; /* Starting size of logo */
+    height: auto;
+    animation: zoomInAndSpread 2s ease-out forwards;
+}
+
+/* Main content styles */
+header {
+    display: flex;                /* Use Flexbox to arrange the logo and links horizontally */
+    justify-content: flex-start;  /* Align items to the left (logo on the left) */
+    align-items: center;          /* Vertically center the items */
+    padding: 20px;
+    z-index: 1;                   /* Ensure content is above other elements */
+   
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%; /* Adjust width */
+    background-color: #fff;
+    z-index: 1; /* Ensure it’s above other content */
+  }  
+.side-logo img {
+    width: 150px; 
+    height: auto;
+    margin-right: 20px;           /* Space between the logo and the navigation links */
+}
+
+/* Links Styling */
+.links {
+    display: flex;                /* Align the links in a row */
+    gap: 15px;                    /* Space between each link */
+}
+
+.link-box {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    padding: 10px 20px;           /* Adjust padding to fit the links better */
+    font-size: 16px;
+    margin: 20px 50px;
+}
+
+.link-box:hover {
+    text-decoration: underline;    /* Change background color on hover */
+}
+.searching{
+    color: #000000;
+    font: 16px "Open Sans", sans-serif;
+    background: #ffffff;
+    border-radius: 40px;
+    margin: 0px 0px 0px -1px;
+    padding: 10px ;
+    display: inline;
+    transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
+    animation: fadeInUp 0.5s forwards; /* Fade-in effect for sections */
+}
+.searching:hover {
+    transform: translateY(-10px); /* Lift the section on hover */
+    box-shadow: 0 15px 30px rgba(255, 255, 255, 0.2); /* Enhanced shadow on hover */
+}
+
+button.searching {
+    color: #ffffff;
+    font: 16px "Open Sans", 'sans-serif';
+    background: #d6a553;
+    margin: 0px 0px 0px -1px;
+    padding: 10px;
+}
+/* Sidebar Styles */
+.sidebar {
+    position: fixed;
+    top: 190px; /* Adjust based on your header height */
+    left: -300px; /* Hidden off-screen initially */
+    width: 300px;
+    height: calc(100% - 70px); /* Account for header height */
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    overflow-y: auto; /* Enable scrolling for long content */
+    transition: left 0.3s ease;
+    padding: 0px;
+    z-index: 1000;
+  }
+  
+  .sidebar h2 {
+    color: #d6a553;
+    font-size: 30px;
+    margin-top: 20px;
+    background-color: #fff;
+
+  }
+  
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background-color: #fff;
+
+  }
+  
+  .sidebar li {
+    margin: 10px 2px;
+    background-color: #fff;
+
+  }
+  
+  .sidebar li a {
+    color: #000000;
+    text-decoration: none;
+    display: block;
+    font-size: 14px;
+    text-decoration: solid;
+    background-color: #fff;
+  }
+  
+  .sidebar li a:hover {
+    background-color: #c9b3b3;
+    padding-left: 5px;
+    font: 20px;
+  }
+  
+  /* Sidebar Toggle */
+  input[type="checkbox"] {
+    display: none; 
+  }
+  
+  .sidebar-label {
+    position: fixed;
+    top: 0px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    background-color: #000000;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block;
+    margin-top: 150px;
+    border: #444;
+  }
+  
+  input[type="checkbox"]:checked ~ .sidebar {
+    left: 0; /* Slide into view */
+  }
+  .bg {
+    /* The image used */
+    background-image: url("headerimage.jpg");
+  
+    /* Full height */
+    height: 50%;
+  
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; 
+  }
+  /* General Styles for Product Card */
+.product-card {
+    width: 370px;             /* Width of the product card */
+    margin: 20px;             /* Space around each card */
+    padding: 10px;            /* Inner padding */
+    background: #fff;         /* White background for the card */
+    border: 1px solid #ddd;   /* Light border around the card */
+    border-radius: 8px;       /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    text-align: center;       /* Center the content inside the card */
+    overflow: hidden;         /* Ensure no content spills out */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hover effects */
+}
+
+.product-card:hover {
+    transform: translateY(-10px); /* Slightly lift the card */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+/* Image Box for Swapping Images */
+.product {
+    position: relative;
+    width: 100%;              /* Full width of the card */
+    height: 400px;            /* Fixed height for the image box */
+    overflow: hidden;         /* Hide overflow */
+    cursor: pointer;          /* Pointer cursor for hover effect */
+    background: #f8f8f8;      /* Light gray background */
+    border-bottom: 1px solid #ddd; /* Border separating image and info */
+}
+
+.product img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;        /* Maintain aspect ratio while covering */
+    transition: opacity 0.5s ease;
+}
+
+.product .back-image {
+    opacity: 0;               /* Hide the second image by default */
+}
+
+.product:hover .back-image {
+    opacity: 1;               /* Show the second image on hover */
+}
+
+.product:hover .front-image {
+    opacity: 0;               /* Hide the first image on hover */
+}
+
+/* Product Information */
+.product-info {
+    padding: 10px 0;          /* Space inside the description section */
+}
+
+.product-info h3 {
+    font-size: 18px;
+    color: #333;              /* Dark text for title */
+    margin: 10px 0;
+}
+
+.product-info p {
+    font-size: 14px;
+    color: #555;              /* Slightly lighter text for price */
+    margin: 0;
+}
+.product-container {
+    display: flex;                  /* Use Flexbox to arrange the product cards */
+    flex-wrap: wrap;                 /* Allow the cards to wrap to the next row if necessary */
+    gap: 5px;                       /* Space between each product card */
+    justify-content: center;         /* Center the product cards horizontally */
+}
+/* Seasonal Favorites Section */
+.seasonal-favorites {
+    text-align: center;                  /* Center everything inside the section */
+    margin: 40px 0;                      /* Add some margin to the top and bottom */
+}
+
+.section-heading {
+    font-size: 24px;                     /* Size of the heading */
+    text-transform: uppercase;           /* Make heading text all caps */
+    margin-bottom: 30px;                 /* Space below the heading */
+    color: #333;                         /* Dark text color */
+    letter-spacing: 2px;                 /* Letter spacing for emphasis */
+}
+
+/* Container for all favorite items */
+.favorites-container {
+    display: flex;                       /* Use Flexbox to arrange items side by side */
+    justify-content: center;             /* Center the items horizontally */
+    gap: 20px;                           /* Space between the items */
+    flex-wrap: wrap;                     /* Allow items to wrap to next line if necessary */
+}
+
+/* Individual favorite item */
+.favorite-item {
+    width: 265px;                        /* Fixed width for each item */
+    height: 402px;                       /* Fixed height for each item */
+    border-radius: 15px;                 /* Rounded corners */
+    overflow: hidden;                    /* Ensure content doesn't overflow */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+    background-color: #f8f8f8;           /* Light background for each box */
+    display: flex;
+    flex-direction: column;              /* Stack content vertically */
+    justify-content: center;             /* Center content vertically */
+    text-align: center;                  /* Center text inside */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.favorite-item:hover {
+    transform: translateY(-10px);        /* Lift the item when hovered */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
+}
+
+/* Styling for the video box */
+.video-box {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;                   /* Make sure video fits inside box */
+    border-radius: 15px;                 /* Rounded corners for video box */
+}
+
+/* Styling for the product image boxes */
+.product-box {
+    width: 100%;
+    height: 100%;                          /* Image takes up most of the box height */
+    object-fit: cover;                    /* Ensure the image fits within the box */
+    border-radius: 15px;                  /* Rounded corners */
+}
+
+.favorite-item p {
+    margin-top: 10px;                     /* Space above text */
+    font-size: 18px;                      /* Font size for category name */
+    color: #333;                          /* Dark text color */
+    font-weight: bold;                    /* Bold text */
+}
+.footer {
+    font-family: 'space-mono', "Sans-serif";
+    background-color: #fff;
+    color: #fff;
+    padding: 40px 20px;
+    margin: 0;
+  }
+  
+  .footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .footer-section {
+    flex: 1 1 250px;
+  }
+  
+  .footer-section h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    color: #d6a553;
+  }
+  
+  .footer-section ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-section ul li {
+    margin-bottom: 10px;
+  }
+  
+  .footer-section ul li a, 
+  .footer-section a {
+    color: #000000;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  .footer-section a:hover {
+    color: #d6a553;
+  }
+  
+  .signup-section .signup-form {
+    display: flex;
+    margin-top: 10px;
+  }
+  
+  .signup-form input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+  }
+  
+  .signup-form button {
+    background-color: #d6a553;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .signup-form button:hover {
+    background-color: #b68d41;
+  }
+  
+  /* Social Media Links */
+  .social-media .social-icons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .social-media .social-icons a {
+    color: #000000;
+    text-decoration: none;
+    padding: 5px 10px;
+    border: 1px solid #d6a553;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .social-media .social-icons a:hover {
+    background-color: #d6a553;
+    color: #ffffff;
+  }
+  
+  /* Footer Bottom */
+  .footer-bottom {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 14px;
+    color: #ccc;
+  }
+  
+  .footer-bottom p {
+    margin: 5px 0;
+  }
+  
+  .footer-bottom span {
+    color: #d6a553;
+  }
