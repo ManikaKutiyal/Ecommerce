@@ -127,7 +127,7 @@ button.searching {
     overflow-y: auto; /* Enable scrolling for long content */
     transition: left 0.3s ease;
     padding: 0px;
-    z-index: 1000;
+    z-index: 9999;
   }
   
   .sidebar h2 {
